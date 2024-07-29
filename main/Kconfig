@@ -1,0 +1,308 @@
+menu "Wifi-WeatherStation WPS Configuration"
+
+    choice WPS_TYPE
+        prompt "WPS Configuration"
+        default WPS_TYPE_PBC
+        help
+            WPS type for the esp32 to use.
+
+        config WPS_TYPE_PBC
+            bool "PBC"
+        config WPS_TYPE_PIN
+            bool "PIN"
+        config WPS_TYPE_DISABLE
+            bool "disable"
+    endchoice
+
+endmenu
+
+menu "Wifi-WeatherStation Task Configuration"
+
+    config TASK_CONFIGURATION_ENABLE
+        bool "Configure Applications Tasks"
+        default n
+
+    # ----------------------------------
+    # Button task
+    menu "Configure Button Task (app_button)"
+        depends on TASK_CONFIGURATION_ENABLE
+
+        config TASK_CORE_AFFINITY_BUTTON
+            bool "Processor Affinity Support for Button Task"
+            default n
+
+        config TASK_CORE_BUTTON
+            depends on TASK_CORE_AFFINITY_BUTTON
+            int "Bind Button Task to Processor Core"
+            range 0 1
+            default 1
+
+        config TASK_PRIO_BUTTON
+            int "Button task priority"
+            range 1 16
+            default 5
+
+        config TASK_STACK_SIZE_BUTTON
+            int "Button stack size"
+            default   3072
+
+         config TASK_STACK_SIZE_BUTTON_DEBUG
+            int "Button stack size (debug)"
+            default   3072
+    endmenu
+
+    # ----------------------------------
+    # Gui task
+    menu "Configure Gui Task (app_gui)"
+        depends on TASK_CONFIGURATION_ENABLE
+
+        config TASK_CORE_AFFINITY_GUI
+            bool "Processor Affinity Support for Gui Task"
+            default n
+
+        config TASK_CORE_GUI
+            depends on TASK_CORE_AFFINITY_GUI
+            int "Gui task affinity"
+            range 0 1
+            default 1
+
+        config TASK_PRIO_GUI
+           int "Gui task priority"
+           range 1 16
+           default 6
+
+       config TASK_STACK_SIZE_GUI
+            int "Gui stack size"
+            default   8192
+    endmenu
+
+    # ----------------------------------
+    # Broadcast task
+    menu "Configure Broadcast Task (app_httpd)"
+        depends on TASK_CONFIGURATION_ENABLE
+
+        config TASK_CORE_AFFINITY_BROADCAST
+            bool "Processor Affinity Support for Broadcast Task"
+            default n
+
+        config TASK_CORE_BROADCAST
+            depends on TASK_CORE_AFFINITY_BROADCAST
+            int "Bind Broadcast Task to Processor Core"
+           range 0 1
+           default 1
+
+        config TASK_PRIO_BROADCAST
+           int "Broadcast task priority"
+           range 1 16
+           default 9
+
+        config TASK_STACK_SIZE_BROADCAST
+            int "Broadcast stack size"
+            default   3072
+    endmenu
+
+    # ----------------------------------
+    # Esphttpd task
+    menu "Configure Esphttpd Task (app_httpd)"
+        depends on TASK_CONFIGURATION_ENABLE
+
+        config TASK_CORE_AFFINITY_ESPHTTPD
+            bool "Processor Affinity Support for Esphttpd Task"
+            default n
+
+        config TASK_CORE_ESPHTTPD
+            depends on TASK_CORE_AFFINITY_ESPHTTPD
+            int "Esphttpd task affinity"
+            range 0 1
+            default 1
+
+        config TASK_PRIO_ESPHTTPD
+           int "Esphttpd task priority"
+           range 1 16
+           default 7
+
+        config TASK_STACK_SIZE_ESPHTTPD
+            int "Esphttpd stack size"
+            default   3072
+        config TASK_STACK_SIZE_ESPHTTPD_DEBUG
+            int "Esphttpd stack size (debug)"
+            default   5012
+    endmenu
+
+    # ----------------------------------
+    # Led task
+    menu "Configure Led Task (app_led)"
+        depends on TASK_CONFIGURATION_ENABLE
+
+        config TASK_CORE_AFFINITY_LED
+            bool "Processor Affinity Support for Led Task"
+            default n
+
+        config TASK_CORE_LED
+            depends on TASK_CORE_AFFINITY_LED
+            int "Led task affinity"
+            range 0 1
+            default 1
+
+        config TASK_PRIO_LED
+           int "Led task priority"
+           range 1 16
+           default 5
+
+        config TASK_STACK_SIZE_LED
+            int "Led stack size"
+            default   2048
+    endmenu
+
+    # ----------------------------------
+    # Ntc task
+    menu "Configure Ntc Task (app_ntc)"
+        depends on TASK_CONFIGURATION_ENABLE
+
+        config TASK_CORE_AFFINITY_NTC
+            bool "Processor Affinity Support for Ntc Task"
+            default n
+
+        config TASK_CORE_NTC
+            depends on TASK_CORE_AFFINITY_NTC
+            int "Ntc task affinity"
+            range 0 1
+            default 1
+
+        config TASK_PRIO_GNTC
+           int "Ntc task priority"
+           range 1 16
+           default 5
+
+        config TASK_STACK_SIZE_NTC
+            int "Ntc stack size"
+            default   3072
+    endmenu
+
+    # ----------------------------------
+    # rfm69 task
+    menu "Configure rfm69 Task (app_rfm69)"
+        depends on TASK_CONFIGURATION_ENABLE
+
+        config TASK_CORE_AFFINITY_RFM69
+            bool "Processor Affinity Support for rfm69 Task"
+            default n
+
+        config TASK_CORE_RFM69
+            depends on TASK_CORE_AFFINITY_RFM69
+            int "rfm69 task affinity"
+            range 0 1
+            default 1
+
+        config TASK_PRIO_RFM69
+           int "rfm69 task priority"
+           range 1 16
+           default 6
+
+        config TASK_STACK_SIZE_RFM69
+            int "rfm69 stack size"
+            default   3584
+    endmenu
+
+    # ----------------------------------
+    # sdcard task
+    menu "Configure sdcard Task (app_sdcard)"
+        depends on TASK_CONFIGURATION_ENABLE
+
+        config TASK_CORE_AFFINITY_SDCARD
+            bool "Processor Affinity Support for sdcard Task"
+            default n
+
+        config TASK_CORE_SDCARD
+            depends on TASK_CORE_AFFINITY_SDCARD
+            int "sdcard task affinity"
+            range 0 1
+            default 1
+
+        config TASK_PRIO_SDCARD
+           int "sdcard task priority"
+           range 1 16
+           default 6
+
+        config TASK_STACK_SIZE_SDCARD
+            int "sdcard stack size"
+            default   3584
+    endmenu
+
+    # ----------------------------------
+    # sensor task
+    menu "Configure sensor Task (app_sensor)"
+        depends on TASK_CONFIGURATION_ENABLE
+
+        config TASK_CORE_AFFINITY_SENSOR
+            bool "Processor Affinity Support for sensor Task"
+            default n
+
+        config TASK_CORE_SENSOR
+            depends on TASK_CORE_AFFINITY_SENSOR
+            int "sensor task affinity"
+            range 0 1
+            default 1
+
+        config TASK_PRIO_SENSOR
+           int "sensor task priority"
+           range 1 16
+           default 6
+
+        config TASK_STACK_SIZE_SENSOR
+            int "sensor stack size"
+            default   3584
+    endmenu
+
+    # ----------------------------------
+    # Weather task
+    menu "Configure Weather Task (app_weather)"
+        depends on TASK_CONFIGURATION_ENABLE
+
+        config TASK_CORE_AFFINITY_WEATHER
+            bool "Processor Affinity Support for Weather Task"
+            default n
+
+        config TASK_CORE_WEATHER
+            depends on TASK_CORE_AFFINITY_WEATHER
+            int "Weather task affinity"
+            range 0 1
+            default 1
+
+        config TASK_PRIO_WEATHER
+           int "Weather task priority"
+           range 1 16
+           default 4
+
+        config TASK_STACK_SIZE_WEATHER
+            int "Weather stack size"
+            default   8192
+    endmenu
+
+    # ----------------------------------
+    # Captdns task
+    menu "Configure Captdns Task (app_captdns)"
+        depends on TASK_CONFIGURATION_ENABLE
+
+        config TASK_CORE_AFFINITY_CAPTDNS
+            bool "Processor Affinity Support for Captdns Task"
+            default n
+
+        config TASK_CORE_CAPTDNS
+            depends on TASK_CORE_AFFINITY_CAPTDNS
+            int "Captdns task affinity"
+            range 0 1
+            default 1
+
+        config TASK_PRIO_CAPTDNS
+           int "Captdns task priority"
+           range 1 16
+           default 6
+
+        config TASK_STACK_SIZE_CAPTDNS
+            int "Captdns stack size"
+            default   1280
+    endmenu
+
+endmenu
+

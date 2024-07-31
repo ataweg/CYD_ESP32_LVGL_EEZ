@@ -1042,7 +1042,7 @@ CONFIG_LOG_TIMESTAMP_SOURCE_SYSTEM=y
 # LWIP
 #
 CONFIG_LWIP_ENABLE=y
-CONFIG_LWIP_LOCAL_HOSTNAME="ESP32_LVGL-EEZ-Demo"
+CONFIG_LWIP_LOCAL_HOSTNAME="CYD_ESP32_LVGL_EEZ"
 # CONFIG_LWIP_NETIF_API is not set
 CONFIG_LWIP_TCPIP_TASK_PRIO=18
 # CONFIG_LWIP_TCPIP_CORE_LOCKING is not set
@@ -1461,20 +1461,6 @@ CONFIG_VFS_MAX_COUNT=8
 CONFIG_VFS_SEMIHOSTFS_MAX_MOUNT_POINTS=1
 # end of Host File System I/O (Semihosting)
 # end of Virtual file system
-
-#
-# Wifi-WeatherStation WPS Configuration
-#
-CONFIG_WPS_TYPE_PBC=y
-# CONFIG_WPS_TYPE_PIN is not set
-# CONFIG_WPS_TYPE_DISABLE is not set
-# end of Wifi-WeatherStation WPS Configuration
-
-#
-# Wifi-WeatherStation Task Configuration
-#
-# CONFIG_TASK_CONFIGURATION_ENABLE is not set
-# end of Wifi-WeatherStation Task Configuration
 
 #
 # LVGL configuration

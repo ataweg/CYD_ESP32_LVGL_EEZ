@@ -4,9 +4,9 @@
 # CMakeLists in this exact order for cmake to work correctly
 cmake_minimum_required( VERSION 3.5 )
 
-set( PRJ_NAME "ESP32_LVGL-EEZ-Demo" )
+set( PRJ_NAME "CYD_ESP32_LVGL_EEZ" )
 set( PRJ_VARIANT "" )
-set( FIRMWARE_NAME "ESP32_LVGL-EEZ-Demo" )
+set( FIRMWARE_NAME "CYD_ESP32_LVGL_EEZ" )
 
 # declare for some components options
 set( CONFIGS_USE_LIBESPHTTPD "y" )
@@ -42,6 +42,10 @@ list( APPEND compile_options
 )
 
 list( APPEND compile_options
+   "-Wno-error=format="
+   "-Wno-format"
+   "-Wno-unused-variable"
+   "-Wno-ignored-qualifiers"
 #   "-Wno-error=unused-const-variable"
 #   "-Wno-unused-const-variable"
 #   "-Wno-error=implicit-function-declaration"
@@ -49,11 +53,7 @@ list( APPEND compile_options
 #   "-Wno-error=tautological-compare"
 #   "-Wno-tautological-compare"
 #   "-Wno-error=address"
-   "-Wno-unused-variable"
 #   "-Wno-unused-function"
-   "-Wno-error=format="
-   "-Wno-format"
-   "-Wno-ignored-qualifiers"
 )
 
 ## for use with gcc 8.20
@@ -66,7 +66,7 @@ list( APPEND cxx_compile_options
    "-Wno-missing-field-initializers"
    "-Wno-error=missing-field-initializers"
 #   "-Wno-deprecated-enum-enum-conversion"
-##   "-Wno-error=overloaded-virtual"
+#   "-Wno-error=overloaded-virtual"
 )
 
 idf_build_set_property( COMPILE_OPTIONS     "${compile_options}"     APPEND )

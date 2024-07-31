@@ -37,7 +37,7 @@
         {
           "objID": "a9bc14b9-1469-4464-976a-2887556c377b",
           "fileName": "screens.c",
-          "template": "#include \"screens.h\"\n#include \"images.h\"\n#include \"fonts.h\"\n#include \"actions.h\"\n#include \"vars.h\"\n#include \"styles.h\"\n#include \"ui.h\"\n\n//${eez-studio LVGL_SCREENS_DEF}\n//${eez-studio LVGL_SCREENS_DEF_EXT}"
+          "template": "#include <string.h>\n\n#include \"screens.h\"\n#include \"images.h\"\n#include \"fonts.h\"\n#include \"actions.h\"\n#include \"vars.h\"\n#include \"styles.h\"\n#include \"ui.h\"\n\n//${eez-studio LVGL_SCREENS_DEF}\n//${eez-studio LVGL_SCREENS_DEF_EXT}"
         },
         {
           "objID": "8d741371-9c3e-409a-d91d-5e25487dc1af",
@@ -708,7 +708,7 @@
                       }
                     }
                   },
-                  "text": "LVGL: 9.x",
+                  "text": "LVGL: 9.1.1",
                   "textType": "literal",
                   "longMode": "WRAP",
                   "recolor": false
@@ -794,7 +794,7 @@
                       }
                     }
                   },
-                  "text": "ESP IDF: 4.4.3",
+                  "text": "ESP IDF: 5.3.0",
                   "textType": "literal",
                   "longMode": "WRAP",
                   "recolor": false

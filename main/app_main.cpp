@@ -16,7 +16,7 @@
 // debug support
 // --------------------------------------------------------------------------
 
-static const char *TAG = "ESP32_LVGL-EEZ-Demo";
+static const char *TAG = "CYD_ESP32_LVGL_EEZ";
 #include "esp_log.h"
 
 // #define DBG_MEMLEAK

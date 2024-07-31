@@ -3,7 +3,6 @@
  */
 
 #include "touch_driver.h"
-#include "esp_log.h"
 #include "lvgl_i2c/i2c_manager.h"
 #include "tp_spi.h"
 

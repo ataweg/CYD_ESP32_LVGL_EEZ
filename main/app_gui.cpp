@@ -28,15 +28,18 @@ static const char *TAG = "app_gui";
 
 #include "esp_timer.h"
 
-/* Littlevgl specific */
+// Littlevgl specific
 #ifdef LV_LVGL_H_INCLUDE_SIMPLE
-#include "lvgl.h"
+   #include "lvgl.h"
 #else
-#include "lvgl/lvgl.h"         // LVGL header file
+   #include "lvgl/lvgl.h"         // LVGL header file
 #endif
-#include "lvgl_helpers.h"      // Assistant hardware driver related
+
+#include "lvgl_helpers.h"         // Assistant hardware driver related
 
 #include "ui/ui.h"
+
+// Include desired font here for espressif/esp-iot-solution example
 
 // LV_IMG_DECLARE(mouse_cursor_icon);         /* Declare the image file. */
 
@@ -66,7 +69,6 @@ static const char *TAG = "app_gui";
 #ifndef CONFIG_TASK_PRIO_GUI
    #define CONFIG_TASK_PRIO_GUI        6
 #endif
-
 
 // --------------------------------------------------------------------------
 // local functions
@@ -218,8 +220,8 @@ static void appGuiTask( void *pvParameter )
    lv_indev_t * indev_touchpad = lv_indev_create();
    lv_indev_set_type( indev_touchpad, LV_INDEV_TYPE_POINTER ); // Touchpad should have POINTER type
    // after calibration the callback function is replaced in lv_tc_indev_init()
-   lv_indev_set_read_cb( indev_touchpad, my_touchpad_read );
 
+   lv_indev_set_read_cb( indev_touchpad, my_touchpad_read );
    lv_indev_set_driver_data( indev_touchpad, ( void * )lv_display_get_driver_data( disp ) );
 #endif
    // Create and start a periodic timer interrupt to call lv_tick_inc
@@ -251,8 +253,8 @@ static void appGuiTask( void *pvParameter )
       // Try to take the semaphore, call lvgl related function on success
       if( pdTRUE == xSemaphoreTake( xGuiSemaphore, portMAX_DELAY ) )
       {
-         lv_timer_handler(); // let the GUI do its work
          ui_tick();
+         lv_timer_handler(); // let the GUI do its work
          xSemaphoreGive( xGuiSemaphore );
       }
 

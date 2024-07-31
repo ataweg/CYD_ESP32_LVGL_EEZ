@@ -181,7 +181,6 @@ bool lvgl_spi_driver_init(int host,
     dma_channel = SPI_DMA_CH_AUTO;
 #endif
     esp_err_t ret = spi_bus_initialize(host, &buscfg, (spi_dma_chan_t)dma_channel);
-    // assert(ret == ESP_OK);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to initialize SPI bus. ret = %d", ret);
         return false;

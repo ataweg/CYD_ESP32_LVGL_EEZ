@@ -422,8 +422,8 @@ void SetAppLogLevels( int app_default_log_level )
    esp_log_level_set( "XPT2046",          ESP_LOG_INFO );
 
 // --- project main ---------------------------------------------------------
-   esp_log_level_set( "app_gui",               ESP_LOG_DEBUG );
-   esp_log_level_set( "app_BB3",               ESP_LOG_DEBUG );
+   esp_log_level_set( "app_gui",          ESP_LOG_INFO );
+   esp_log_level_set( "app_BB3",          ESP_LOG_DEBUG );
 }
 
 extern "C"

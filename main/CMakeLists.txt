@@ -19,7 +19,6 @@ set( PRIV_COMPONENT_REQUIRES
 )
 
 set( COMPONENT_REQUIRES
-   "dbg_helper"                  # dbg_mem.h
    "lvgl"                        # lvgl.h
    "lvgl_esp32_drivers"
    "eez-framework"

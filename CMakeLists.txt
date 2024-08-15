@@ -18,10 +18,6 @@ message( "Prj variant: ${PRJ_VARIANT}" )
 message( "Prj directory: ${CMAKE_SOURCE_DIR}" )
 message( "Build directory: ${MY_BUILD_DIR}" )
 
-list( APPEND EXTRA_COMPONENT_DIRS
-   "F:/Projects/InternetOfThings/ComponentsLib/sources"
-)
-
 # shorten component list
 set( COMPONENTS
    "main"               # required

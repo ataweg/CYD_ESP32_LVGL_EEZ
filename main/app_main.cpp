@@ -19,15 +19,6 @@
 static const char *TAG = "CYD_ESP32_LVGL_EEZ";
 #include "esp_log.h"
 
-// #define DBG_MEMLEAK
-#define DBG_HEAP_INFO
-
-// #define NO_DBG_MEMLEAK
-// #define NO_DBG_HEAP_INFO
-
-#include "dbg_mem.h"
-#include "dbg_helper.h"          // HEAP_INFO()
-
 // --------------------------------------------------------------------------
 //
 // --------------------------------------------------------------------------
@@ -358,7 +349,7 @@ void PinsInit( void )
 // --------------------------------------------------------------------------
 
 extern "C"
-void SetAppLogLevels( int app_default_log_level )
+void SetAppLogLevels( esp_log_level_t app_default_log_level )
 {
       esp_log_level_set( "*", app_default_log_level );      // set all components to WARN level
 
@@ -471,7 +462,6 @@ void app_main( void )
    // configure pins
    // ----------------------------------
 
-   HEAP_INFO( "configure pins" );
    ESP_LOGI( TAG, "configure pins" );
 
    PinsInit();
@@ -480,7 +470,6 @@ void app_main( void )
    // print system info
    // ----------------------------------
 
-   HEAP_INFO( "print system info" );
    ESP_LOGI( TAG, "print system info" );
 
    printSystemInfo();
@@ -489,7 +478,6 @@ void app_main( void )
    // init nvs flash
    // ----------------------------------
 
-   HEAP_INFO( "init nvs flash" );
    ESP_LOGD( TAG, "Starting nvs_flash_init" );
 
    // initialize NV flash memory storage
@@ -507,7 +495,6 @@ void app_main( void )
    // get user_settings partition for configuration
    // ----------------------------------
 
-   HEAP_INFO( "get user_settings partition for configuration" );
    ESP_LOGI( TAG, "get user_settings partition for configuration" );
 
 #define  USER_SETTINGS_PARTITION_TYPE      ESP_PARTITION_TYPE_DATA
@@ -537,7 +524,6 @@ void app_main( void )
    // Start the Display and Touch Task
    // ----------------------------------
 
-   HEAP_INFO( "start gui task (display and touch)" );
    ESP_LOGI( TAG, "start gui task (display and touch) ..." );
 
    // show welcome screen
@@ -548,14 +534,12 @@ void app_main( void )
    // system and application setup done
    // ----------------------------------
 
-   HEAP_INFO( "system and application setup done" );
    ESP_LOGI( TAG, "system and application setup done" );
    ESP_LOGI( TAG, "--------------------------------------------------------------------------" );
 
    printHeapInfo();
    printTaskList();
 
-   HEAP_INFO( "Ready ..." );
    ESP_LOGI( TAG, "Ready ..." );
    ESP_LOGI( TAG, "--------------------------------------------------------------------------\n\n" );
 }

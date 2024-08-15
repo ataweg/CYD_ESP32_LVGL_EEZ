@@ -5,15 +5,6 @@
 static const char *TAG = "app_BB3";
 #include "esp_log.h"
 
-// #define DBG_MEMLEAK
-// #define DBG_HEAP_INFO
-
-// #define NO_DBG_MEMLEAK
-// #define NO_DBG_HEAP_INFO
-
-#include "dbg_mem.h"
-#include "dbg_helper.h"          // HEAP_INFO()
-
 // --------------------------------------------------------------------------
 //
 // --------------------------------------------------------------------------
@@ -90,7 +81,7 @@ SemaphoreHandle_t connectionSemaphore;
 //
 // --------------------------------------------------------------------------
 
-static void ICACHE_FLASH_ATTR event_handler( void* arg, esp_event_base_t event_base,
+static void event_handler( void* arg, esp_event_base_t event_base,
     int32_t event_id, void* event_data )
 {
    if (event_base == WIFI_EVENT )

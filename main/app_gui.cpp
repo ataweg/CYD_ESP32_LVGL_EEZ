@@ -20,11 +20,13 @@
 
 static const char *TAG = "app_gui";
 #include "esp_log.h"
-#include "dbg_helper.h"          // HEAP_INFO()
 
 // --------------------------------------------------------------------------
 //
 // --------------------------------------------------------------------------
+
+#include "freertos/FreeRTOS.h"
+#include "esp_heap_caps.h"
 
 #include "esp_timer.h"
 
@@ -137,7 +139,6 @@ lv_display_t *my_display_create( uint32_t hor_res, uint32_t ver_res )
    uint32_t buf_size_bytes = hor_res * LINES_TO_DRAW * ( ( LV_COLOR_DEPTH + 7 ) / 8 );
    ESP_LOGI( TAG, "Display buffer size: %d", buf_size_bytes );
 
-   HEAP_INFO( "appGuiTask allocate display buffers" );
 #if USE_STATIC_DISPLAY_BUFFER
    // !!! this will result in a crash
    uint8_t disp_buf1[ buf_size_bytes ];
@@ -157,7 +158,6 @@ lv_display_t *my_display_create( uint32_t hor_res, uint32_t ver_res )
    uint8_t* disp_buf2 = NULL;
  #endif
 #endif
-   HEAP_INFO( "appGuiTask allocate display buffers done" );
 
    // Create the display in LVGL. Set also the resolution of the display
    lv_display_t * disp = lv_display_create( hor_res, ver_res );
